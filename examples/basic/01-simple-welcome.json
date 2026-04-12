@@ -1,0 +1,41 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Welcome to Adaptive Cards! 👋",
+      "size": "Large",
+      "weight": "Bolder",
+      "color": "Accent"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This is your first adaptive card. It's simple, clean, and effective!",
+      "wrap": true,
+      "spacing": "Medium"
+    },
+    {
+      "type": "Image",
+      "url": "https://adaptivecards.io/content/samples/aclogo.png",
+      "size": "Medium",
+      "horizontalAlignment": "Center",
+      "spacing": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Adaptive Cards work across multiple platforms including Teams, Outlook, and more.",
+      "wrap": true,
+      "isSubtle": true,
+      "spacing": "Small"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Learn More",
+      "url": "https://adaptivecards.io"
+    }
+  ]
+}

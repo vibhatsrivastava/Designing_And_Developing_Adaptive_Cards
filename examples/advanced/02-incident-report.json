@@ -1,0 +1,310 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "attention",
+      "bleed": true,
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://via.placeholder.com/50/FF0000/FFFFFF?text=!",
+                  "size": "Small"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "🚨 CRITICAL INCIDENT",
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "color": "Attention"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "INC-2024-00789",
+                  "spacing": "None",
+                  "color": "Light"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "P1",
+                  "weight": "Bolder",
+                  "size": "ExtraLarge",
+                  "color": "Light"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Database Connection Failure - Production",
+          "weight": "Bolder",
+          "size": "Large",
+          "color": "Attention"
+        },
+        {
+          "type": "TextBlock",
+          "text": "Multiple users reporting inability to access the application. Primary database cluster appears unresponsive.",
+          "wrap": true,
+          "spacing": "Small"
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "spacing": "Medium",
+      "separator": true,
+      "facts": [
+        {
+          "title": "Status:",
+          "value": "🔴 Active"
+        },
+        {
+          "title": "Severity:",
+          "value": "P1 - Critical"
+        },
+        {
+          "title": "Started:",
+          "value": "Jan 15, 2024 14:23 UTC"
+        },
+        {
+          "title": "Duration:",
+          "value": "12 minutes"
+        },
+        {
+          "title": "Affected Services:",
+          "value": "Web App, Mobile API, Admin Portal"
+        },
+        {
+          "title": "Users Impacted:",
+          "value": "~15,000 (estimated)"
+        },
+        {
+          "title": "Reported by:",
+          "value": "Automated Monitoring"
+        },
+        {
+          "title": "Assigned to:",
+          "value": "Database Team"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Technical Details",
+          "weight": "Bolder"
+        },
+        {
+          "type": "FactSet",
+          "spacing": "Small",
+          "facts": [
+            {
+              "title": "Affected Systems:",
+              "value": "prod-db-cluster-01"
+            },
+            {
+              "title": "Error Code:",
+              "value": "CONN_TIMEOUT_3306"
+            },
+            {
+              "title": "Region:",
+              "value": "US-EAST-1"
+            },
+            {
+              "title": "Environment:",
+              "value": "Production"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Recent Updates",
+          "weight": "Bolder"
+        },
+        {
+          "type": "Container",
+          "spacing": "Small",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "14:35 UTC - Database Team notified, investigating connection pool",
+              "wrap": true,
+              "size": "Small"
+            },
+            {
+              "type": "TextBlock",
+              "text": "14:30 UTC - Failover to secondary cluster initiated",
+              "wrap": true,
+              "size": "Small",
+              "spacing": "Small"
+            },
+            {
+              "type": "TextBlock",
+              "text": "14:25 UTC - Alert triggered: DB connection timeout threshold exceeded",
+              "wrap": true,
+              "size": "Small",
+              "spacing": "Small"
+            },
+            {
+              "type": "TextBlock",
+              "text": "14:23 UTC - First user reports received via support",
+              "wrap": true,
+              "size": "Small",
+              "spacing": "Small"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Incident Actions",
+          "weight": "Bolder"
+        },
+        {
+          "type": "Input.ChoiceSet",
+          "id": "incidentAction",
+          "label": "Select Action",
+          "style": "compact",
+          "choices": [
+            {
+              "title": "Join War Room",
+              "value": "joinWarRoom"
+            },
+            {
+              "title": "Post Update",
+              "value": "postUpdate"
+            },
+            {
+              "title": "Escalate",
+              "value": "escalate"
+            },
+            {
+              "title": "Change Severity",
+              "value": "changeSeverity"
+            },
+            {
+              "title": "Close Incident",
+              "value": "closeIncident"
+            }
+          ]
+        },
+        {
+          "type": "Input.Text",
+          "id": "updateNotes",
+          "label": "Update Notes",
+          "placeholder": "Provide update details...",
+          "isMultiline": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Communication",
+          "weight": "Bolder"
+        },
+        {
+          "type": "FactSet",
+          "spacing": "Small",
+          "facts": [
+            {
+              "title": "Status Page:",
+              "value": "Posted - Investigating"
+            },
+            {
+              "title": "Customer Comms:",
+              "value": "Email notification sent"
+            },
+            {
+              "title": "Internal Slack:",
+              "value": "#incidents-critical"
+            },
+            {
+              "title": "War Room:",
+              "value": "Active - 8 participants"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Join War Room",
+      "url": "https://meet.example.com/incident-789"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Post Update",
+      "style": "positive",
+      "data": {
+        "actionType": "postIncidentUpdate",
+        "incidentId": "INC-2024-00789"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Escalate",
+      "style": "destructive",
+      "data": {
+        "actionType": "escalateIncident",
+        "incidentId": "INC-2024-00789"
+      }
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Dashboard",
+      "url": "https://monitoring.example.com/incidents/INC-2024-00789"
+    }
+  ]
+}

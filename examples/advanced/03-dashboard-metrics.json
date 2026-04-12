@@ -1,0 +1,358 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "📈 Quarterly Performance Dashboard",
+      "size": "ExtraLarge",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Q4 2023 Results",
+      "spacing": "None",
+      "isSubtle": true,
+      "size": "Medium"
+    },
+    {
+      "type": "ColumnSet",
+      "spacing": "Medium",
+      "separator": true,
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "Container",
+              "style": "emphasis",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Revenue",
+                  "weight": "Bolder",
+                  "size": "Small"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "$2.4M",
+                  "size": "ExtraLarge",
+                  "weight": "Bolder",
+                  "color": "Good"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "↑ 23% vs Q3",
+                  "size": "Small",
+                  "color": "Good",
+                  "spacing": "None"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "Container",
+              "style": "emphasis",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "New Customers",
+                  "weight": "Bolder",
+                  "size": "Small"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "147",
+                  "size": "ExtraLarge",
+                  "weight": "Bolder",
+                  "color": "Good"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "↑ 18% vs Q3",
+                  "size": "Small",
+                  "color": "Good",
+                  "spacing": "None"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "Container",
+              "style": "emphasis",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Churn Rate",
+                  "weight": "Bolder",
+                  "size": "Small"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "3.2%",
+                  "size": "ExtraLarge",
+                  "weight": "Bolder",
+                  "color": "Good"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "↓ 0.8% vs Q3",
+                  "size": "Small",
+                  "color": "Good",
+                  "spacing": "None"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Department Performance",
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "ColumnSet",
+          "spacing": "Small",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "40",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Sales",
+                  "weight": "Bolder"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "60",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "████████████████░░░░ 82%",
+                  "color": "Good"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ColumnSet",
+          "spacing": "Small",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "40",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Marketing",
+                  "weight": "Bolder"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "60",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "██████████████░░░░░░ 70%",
+                  "color": "Good"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ColumnSet",
+          "spacing": "Small",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "40",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Engineering",
+                  "weight": "Bolder"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "60",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "██████████████████░░ 88%",
+                  "color": "Good"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ColumnSet",
+          "spacing": "Small",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "40",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Support",
+                  "weight": "Bolder"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "60",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "███████████████░░░░░ 76%",
+                  "color": "Good"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Key Achievements",
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "TextBlock",
+          "text": "✅ Launched new product line",
+          "wrap": true,
+          "spacing": "Small"
+        },
+        {
+          "type": "TextBlock",
+          "text": "✅ Expanded to 3 new markets",
+          "wrap": true,
+          "spacing": "Small"
+        },
+        {
+          "type": "TextBlock",
+          "text": "✅ Achieved 99.9% system uptime",
+          "wrap": true,
+          "spacing": "Small"
+        },
+        {
+          "type": "TextBlock",
+          "text": "✅ Customer satisfaction: 4.7/5.0",
+          "wrap": true,
+          "spacing": "Small"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Q1 2024 Priorities",
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "FactSet",
+          "spacing": "Small",
+          "facts": [
+            {
+              "title": "1.",
+              "value": "Scale customer success team"
+            },
+            {
+              "title": "2.",
+              "value": "Launch mobile app beta"
+            },
+            {
+              "title": "3.",
+              "value": "Expand enterprise sales"
+            },
+            {
+              "title": "4.",
+              "value": "Improve onboarding experience"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "📊 Full Report",
+      "url": "https://example.com/reports/q4-2023"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "📈 Analytics Dashboard",
+      "url": "https://analytics.example.com/q4"
+    },
+    {
+      "type": "Action.ShowCard",
+      "title": "💬 Provide Feedback",
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "Input.Text",
+            "id": "feedback",
+            "label": "Your Feedback",
+            "placeholder": "Share your thoughts on Q4 performance...",
+            "isMultiline": true
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.Submit",
+            "title": "Submit",
+            "data": {
+              "actionType": "submitFeedback",
+              "reportId": "q4-2023"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

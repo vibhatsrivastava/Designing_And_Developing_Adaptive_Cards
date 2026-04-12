@@ -1,0 +1,136 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📊 Team Poll",
+          "size": "Large",
+          "weight": "Bolder"
+        },
+        {
+          "type": "TextBlock",
+          "text": "Help us decide!",
+          "spacing": "None",
+          "isSubtle": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Where should we hold our next team building event?",
+          "wrap": true,
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "TextBlock",
+          "text": "Vote for your preferred location. Poll closes on January 18, 2024.",
+          "wrap": true,
+          "spacing": "Small",
+          "isSubtle": true
+        }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "pollChoice",
+      "style": "expanded",
+      "isRequired": true,
+      "spacing": "Medium",
+      "choices": [
+        {
+          "title": "🏖️ Beach Resort - Relaxation and water activities",
+          "value": "beach"
+        },
+        {
+          "title": "🏔️ Mountain Lodge - Hiking and adventure sports",
+          "value": "mountain"
+        },
+        {
+          "title": "🎢 Theme Park - Fun rides and entertainment",
+          "value": "theme_park"
+        },
+        {
+          "title": "🏙️ City Tour - Cultural exploration and dining",
+          "value": "city"
+        },
+        {
+          "title": "🏕️ Camping - Outdoor experience and bonding",
+          "value": "camping"
+        }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "suggestion",
+      "label": "Other Suggestions (Optional)",
+      "placeholder": "Have another idea? Share it here...",
+      "isMultiline": true
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Current Results (25 votes)",
+          "weight": "Bolder",
+          "size": "Small"
+        },
+        {
+          "type": "FactSet",
+          "spacing": "Small",
+          "facts": [
+            {
+              "title": "🏖️ Beach Resort:",
+              "value": "40% (10 votes)"
+            },
+            {
+              "title": "🏔️ Mountain Lodge:",
+              "value": "28% (7 votes)"
+            },
+            {
+              "title": "🎢 Theme Park:",
+              "value": "16% (4 votes)"
+            },
+            {
+              "title": "🏙️ City Tour:",
+              "value": "12% (3 votes)"
+            },
+            {
+              "title": "🏕️ Camping:",
+              "value": "4% (1 vote)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit Vote",
+      "style": "positive",
+      "data": {
+        "actionType": "submitVote",
+        "pollId": "team-event-2024-q1"
+      }
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Full Results",
+      "url": "https://example.com/polls/team-event-2024-q1"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "New Task Assigned",
+                  "weight": "Bolder",
+                  "size": "Large"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "TASK-2024-001",
+                  "spacing": "None",
+                  "isSubtle": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "🔴 High Priority",
+                  "color": "Attention",
+                  "weight": "Bolder"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Update API Documentation",
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "TextBlock",
+          "text": "Please update the API documentation to reflect the recent changes in the authentication flow. Include code examples and migration guide.",
+          "wrap": true,
+          "spacing": "Small"
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "spacing": "Medium",
+      "separator": true,
+      "facts": [
+        {
+          "title": "Assigned by:",
+          "value": "Sarah Johnson"
+        },
+        {
+          "title": "Assigned to:",
+          "value": "You"
+        },
+        {
+          "title": "Due date:",
+          "value": "January 20, 2024"
+        },
+        {
+          "title": "Project:",
+          "value": "API Modernization"
+        },
+        {
+          "title": "Sprint:",
+          "value": "Sprint 12"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Quick Actions",
+          "weight": "Bolder"
+        },
+        {
+          "type": "Input.ChoiceSet",
+          "id": "taskStatus",
+          "label": "Update Status",
+          "style": "compact",
+          "choices": [
+            {
+              "title": "Not Started",
+              "value": "not_started"
+            },
+            {
+              "title": "In Progress",
+              "value": "in_progress"
+            },
+            {
+              "title": "In Review",
+              "value": "in_review"
+            },
+            {
+              "title": "Completed",
+              "value": "completed"
+            },
+            {
+              "title": "Blocked",
+              "value": "blocked"
+            }
+          ],
+          "value": "not_started"
+        },
+        {
+          "type": "Input.Date",
+          "id": "estimatedCompletion",
+          "label": "Estimated Completion Date"
+        },
+        {
+          "type": "Input.Text",
+          "id": "notes",
+          "label": "Notes",
+          "placeholder": "Add any notes or blockers...",
+          "isMultiline": true
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Accept Task",
+      "style": "positive",
+      "data": {
+        "actionType": "acceptTask",
+        "taskId": "TASK-2024-001"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Update Status",
+      "data": {
+        "actionType": "updateTaskStatus",
+        "taskId": "TASK-2024-001"
+      }
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "View in Portal",
+      "url": "https://example.com/tasks/TASK-2024-001"
+    }
+  ]
+}

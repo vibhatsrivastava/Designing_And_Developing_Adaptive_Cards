@@ -1,0 +1,50 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "🔔 New Notification",
+          "size": "Large",
+          "weight": "Bolder"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "You have a new message from the system.",
+      "wrap": true,
+      "spacing": "Medium"
+    },
+    {
+      "type": "FactSet",
+      "spacing": "Medium",
+      "facts": [
+        {
+          "title": "From:",
+          "value": "System Administrator"
+        },
+        {
+          "title": "Priority:",
+          "value": "Normal"
+        },
+        {
+          "title": "Time:",
+          "value": "Just now"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Details",
+      "url": "https://example.com"
+    }
+  ]
+}

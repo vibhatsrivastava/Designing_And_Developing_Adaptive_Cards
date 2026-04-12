@@ -1,0 +1,122 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Customer Feedback Form",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "We value your feedback! Please take a moment to share your experience.",
+      "wrap": true,
+      "spacing": "Small",
+      "isSubtle": true
+    },
+    {
+      "type": "Input.Text",
+      "id": "customerName",
+      "label": "Full Name",
+      "placeholder": "Enter your name",
+      "isRequired": true,
+      "errorMessage": "Name is required",
+      "spacing": "Medium"
+    },
+    {
+      "type": "Input.Text",
+      "id": "email",
+      "label": "Email Address",
+      "placeholder": "your.email@example.com",
+      "style": "Email",
+      "isRequired": true,
+      "errorMessage": "Valid email is required"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "satisfaction",
+      "label": "Overall Satisfaction",
+      "style": "compact",
+      "isRequired": true,
+      "choices": [
+        {
+          "title": "⭐⭐⭐⭐⭐ Excellent",
+          "value": "5"
+        },
+        {
+          "title": "⭐⭐⭐⭐ Very Good",
+          "value": "4"
+        },
+        {
+          "title": "⭐⭐⭐ Good",
+          "value": "3"
+        },
+        {
+          "title": "⭐⭐ Fair",
+          "value": "2"
+        },
+        {
+          "title": "⭐ Poor",
+          "value": "1"
+        }
+      ],
+      "value": "5"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "categories",
+      "label": "What aspects would you like to comment on?",
+      "isMultiSelect": true,
+      "style": "expanded",
+      "choices": [
+        {
+          "title": "Product Quality",
+          "value": "quality"
+        },
+        {
+          "title": "Customer Service",
+          "value": "service"
+        },
+        {
+          "title": "Delivery Speed",
+          "value": "delivery"
+        },
+        {
+          "title": "Price/Value",
+          "value": "price"
+        },
+        {
+          "title": "Website Experience",
+          "value": "website"
+        }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "comments",
+      "label": "Additional Comments",
+      "placeholder": "Tell us more about your experience...",
+      "isMultiline": true,
+      "maxLength": 500
+    },
+    {
+      "type": "Input.Toggle",
+      "id": "subscribe",
+      "title": "Subscribe to newsletter for updates and special offers",
+      "value": "false"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit Feedback",
+      "style": "positive",
+      "data": {
+        "actionType": "submitFeedback",
+        "formId": "customer-feedback-v1"
+      }
+    }
+  ]
+}
