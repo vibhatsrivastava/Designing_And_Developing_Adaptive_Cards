@@ -1,4 +1,4 @@
-# Adaptive Cards - Quick Reference Cheat Sheet
+ # Adaptive Cards - Quick Reference Cheat Sheet
 
 ## 📐 Basic Card Structure
 
@@ -365,6 +365,194 @@ fetch(webhookUrl, {
 | RichTextBlock | 1.2 | ✅ |
 | Table | 1.5 | ✅ |
 | Action.Execute | 1.4 | ✅ |
+
+## 🔄 Power Automate Integration
+
+### Common Triggers
+
+**Recurrence** (⏰ Scheduled Cards)
+```
+Trigger: Recurrence
+Interval: 1, Frequency: Day
+At these hours: 9
+→ Sends card daily at 9 AM
+```
+
+**HTTP Request** (📝 Form Submissions)
+```
+Trigger: When a HTTP request is received
+Request Body Schema: { "field1": "string", "field2": "string" }
+→ Copy URL after saving, use in Action.Submit
+```
+
+**Manual** (🔘 Button-Triggered)
+```
+Trigger: Manually trigger a flow
+Add inputs: Text, Number, Yes/No, etc.
+→ Run from Power Automate or Teams
+```
+
+**SharePoint** (💎 Premium)
+```
+Trigger: When an item is created
+List: "Requests"
+→ Auto-send card when SharePoint item added
+```
+
+### Common Actions
+
+**HTTP - Send Card to Teams**
+```
+Method: POST
+URI: YOUR_TEAMS_WEBHOOK_URL
+Headers: Content-Type = application/json
+Body: Card wrapped in Teams message envelope
+```
+
+**Teams - Post Adaptive Card** (💎 Premium - Recommended)
+```
+Post as: Flow bot
+Post in: Channel
+Adaptive Card: { card JSON }
+→ Returns message ID for updates
+```
+
+**Start and Wait for Approval**
+```
+Approval type: Approve/Reject - First to respond
+Title: "Approve expense request"
+Assigned to: manager@company.com
+→ Use outcome in Condition: "Approve" or "Reject"
+```
+
+**Condition - Branch Logic**
+```
+If: @{outputs('Approval')?['body/outcome']}
+Equals: Approve
+Then: Send approval email + update SharePoint
+Else: Send rejection email
+```
+
+**Update Message** (💎 Premium)
+```
+Message: @{outputs('Post_card')?['messageId']}
+Update card: Modified card JSON with new status
+→ Dynamically update existing card in Teams
+```
+
+### Dynamic Content Examples
+
+**Current Date/Time**
+```
+@{formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm')}
+→ "2026-04-14 15:30"
+```
+
+**Add Days**
+```
+@{formatDateTime(addDays(utcNow(), 7), 'yyyy-MM-dd')}
+→ Date 7 days from now
+```
+
+**Format Number**
+```
+@{formatNumber(1234.5, 'N2')}
+→ "1,234.50"
+```
+
+**Reference Form Data**
+```
+@{triggerBody()?['feedbackRating']}
+→ Value from Input.ChoiceSet with id="feedbackRating"
+```
+
+**Conditional Expression**
+```json
+{
+  "color": "@{if(equals(triggerBody()?['priority'], 'High'), 'attention', 'default')}"
+}
+```
+
+### Teams Message Envelope
+
+**Required wrapper for webhook cards:**
+```json
+{
+  "type": "message",
+  "attachments": [{
+    "contentType": "application/vnd.microsoft.card.adaptive",
+    "content": {
+      "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+      "type": "AdaptiveCard",
+      "version": "1.5",
+      "body": [ /* your card elements */ ]
+    }
+  }]
+}
+```
+
+### Action.Submit Data Pattern
+
+**In your card:**
+```json
+{
+  "type": "Action.Submit",
+  "title": "Submit Feedback",
+  "data": {
+    "action": "submitFeedback",
+    "formId": "feedback-001"
+  }
+}
+```
+
+**In your flow (HTTP trigger):**
+```
+Parse JSON: @{triggerBody()}
+Check action: @{body('Parse_JSON')?['action']}
+Get form data: @{body('Parse_JSON')?['inputField']}
+```
+
+### Error Handling
+
+**Configure Run After**
+```
+1. Click "..." on action → Configure run after
+2. Check ☑ "has failed"
+3. Add Send Email action to notify on errors
+```
+
+**Scope for Error Handling**
+```
+Scope: Main Flow Logic
+  ├─ Send card
+  ├─ Process form
+  └─ Update database
+  
+Scope: Error Handler (runs if Main failed)
+  ├─ Log error to SharePoint
+  └─ Send alert email
+```
+
+### Quick Reference
+
+| Task | Free Tier | Premium | 
+|------|-----------|---------|
+| Send scheduled cards | ✅ HTTP | ✅ Teams connector |
+| Receive form data | ✅ HTTP trigger | ✅ HTTP trigger |
+| Built-in approvals | ✅ Yes | ✅ Yes |
+| Update cards | ❌ No | ✅ Update message |
+| SharePoint integration | ❌ No | ✅ Yes |
+| SQL connector | ❌ No | ✅ Yes |
+
+**💡 Pro Tips:**
+- Use native Teams connector (Premium) for card updates
+- Store webhook URLs in environment variables
+- Add retries for external API calls
+- Test flows with "Test" button before deploying
+- Name actions descriptively for easier debugging
+- Use Compose action for complex JSON (better readability)
+
+See [power-automate/](power-automate/) for complete flow examples!
 
 ## 🔗 Quick Links
 

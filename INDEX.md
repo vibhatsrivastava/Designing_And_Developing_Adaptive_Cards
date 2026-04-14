@@ -105,6 +105,41 @@ Your complete guide to mastering Microsoft Adaptive Cards. Follow this learning 
 - Configuration management
 - Testing examples
 
+### 🔄 [Power Automate Integration](power-automate/) **NEW!**
+
+Complete end-to-end workflow automation without writing code!
+
+#### [Power Automate Overview](power-automate/README.md)
+- Quick Start (5-minute flow)
+- Architecture & concepts
+- Free vs Premium features
+- Troubleshooting guide
+
+#### ⭐ [Basic Flows](power-automate/basic/) (Free Tier)
+- **Scheduled Card Sender** - Daily/weekly card delivery
+- **Form Submission Handler** - Process feedback forms via HTTP
+- **Button Click Acknowledgment** - Simple confirmation workflows
+
+#### ⭐⭐⭐ [Intermediate Flows](power-automate/intermediate/) (Free + 💎 Premium)
+- **Approval Workflow** - Built-in approvals with routing
+- **Dynamic Survey Card** - Generate cards from data sources
+- **Task Assignment with Updates** - Interactive task management
+
+#### ⭐⭐⭐⭐⭐ [Advanced Flows](power-automate/advanced/) (💎 Premium)
+- **Multi-Level Approval** - Escalating approval chains (Manager → Director → Finance)
+- **Incident Management Lifecycle** - Full incident workflow with card updates
+- **External System Integration** - SQL/CRM integration with dynamic cards
+
+#### [Tutorials](power-automate/tutorials/)
+Step-by-step guides with screenshots:
+- Feedback Form Flow (connects to [01-feedback-form.json](examples/intermediate/01-feedback-form.json))
+- Task Assignment Flow (connects to [02-task-assignment.json](examples/intermediate/02-task-assignment.json))
+- Poll Voting Flow (connects to [03-poll-voting.json](examples/intermediate/03-poll-voting.json))
+- Approval Workflow Flow (connects to [01-approval-workflow.json](examples/advanced/01-approval-workflow.json))
+
+#### [Flow Exports](power-automate/flow-exports/)
+Importable flow packages for direct deployment
+
 ## 🎓 Practice & Learn
 
 ### [Practical Exercises](EXERCISES.md)

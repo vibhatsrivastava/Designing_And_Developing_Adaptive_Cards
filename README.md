@@ -12,6 +12,7 @@ A comprehensive, hands-on guide to learning and mastering Microsoft Adaptive Car
 - **Building your first card** from scratch
 - **Integration with Microsoft Teams**
 - **Sending and receiving notifications**
+- **🔄 Power Automate workflows** - Handle forms, approvals, and automation **NEW!**
 - **Advanced workflows** and best practices
 
 ## 🚀 Quick Start
@@ -29,9 +30,15 @@ A comprehensive, hands-on guide to learning and mastering Microsoft Adaptive Car
 │   ├── basic/                  # Beginner-friendly examples
 │   ├── intermediate/           # Forms and interactive cards
 │   └── advanced/               # Complex workflows
-└── teams-integration/          # Teams integration code
-    ├── powershell/             # PowerShell examples
-    └── python/                 # Python examples
+├── teams-integration/          # Teams integration code
+│   ├── powershell/             # PowerShell examples
+│   └── python/                 # Python examples
+└── power-automate/             # 🔄 Power Automate workflows NEW!
+    ├── basic/                  # Beginner flows (free tier)
+    ├── intermediate/           # Interactive workflows
+    ├── advanced/               # Enterprise-grade flows
+    ├── tutorials/              # Step-by-step guides
+    └── flow-exports/           # Importable flow packages
 ```
 
 ## 📖 Main Guide
@@ -73,7 +80,17 @@ Invoke-RestMethod -Uri $webhookUrl -Method Post -Body $card -ContentType "applic
 ```
 
 ### Python
-```python
+### 🔄 Power Automate (No Code!)
+```
+1. Create flow with Recurrence trigger
+2. Add HTTP action to send card to Teams webhook
+3. Dynamically generate card content with expressions
+4. Handle form submissions via HTTP triggers
+5. Build approval workflows with built-in actions
+```
+
+See [Teams Integration](teams-integration/) for PowerShell/Python examples.  
+See [Power Automate Integration](power-automate/) for no-code workflow
 # Send a card to Teams
 import requests
 response = requests.post(webhook_url, json=card)
