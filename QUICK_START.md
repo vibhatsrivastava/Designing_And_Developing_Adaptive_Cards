@@ -168,19 +168,142 @@ If you see the card in Teams, congratulations! You've just:
 - ✅ Understood the basic card structure
 - ✅ Sent your first adaptive card
 
+---
+
+## 🤖 Quick Start: Power Automate (5 minutes)
+
+Automate card delivery without writing code!
+
+### 🎯 Goal
+Create a scheduled flow that sends a card to Teams every weekday morning
+
+### 📋 What You'll Need
+- Microsoft 365 account with Power Automate access
+- Teams webhook from Step 1 above
+- 5 minutes
+
+### 🚀 Step-by-Step
+
+#### Step 1: Create a Scheduled Flow (2 minutes)
+
+1. Go to https://make.powerautomate.com
+2. Sign in with your M365 account
+3. Click **"+ Create"** in the left sidebar
+4. Select **"Scheduled cloud flow"**
+5. Configure:
+   - **Flow name**: `Daily Team Reminder`
+   - **Starting**: Tomorrow's date
+   - **Repeat every**: `1` **Day**
+   - **At these hours**: `9` (9 AM)
+6. Click **"Create"**
+
+#### Step 2: Add HTTP Action (2 minutes)
+
+1. Click **"+ New step"**
+2. Search for `HTTP`
+3. Select **"HTTP"** action (under Standard connectors)
+4. Fill in:
+   - **Method**: `POST`
+   - **URI**: Paste your Teams webhook URL from earlier
+   - **Headers**: Click "Add new parameter" → Select "Headers"
+     - Key: `Content-Type`
+     - Value: `application/json`
+   - **Body**: Paste the JSON below
+
+```json
+{
+  "type": "message",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "content": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.5",
+        "body": [
+          {
+            "type": "Container",
+            "style": "emphasis",
+            "items": [
+              {
+                "type": "TextBlock",
+                "text": "☀️ Good Morning Team!",
+                "size": "large",
+                "weight": "bolder"
+              }
+            ]
+          },
+          {
+            "type": "TextBlock",
+            "text": "Today is @{formatDateTime(utcNow(), 'dddd, MMMM dd, yyyy')}",
+            "wrap": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "Have a productive day! 🚀",
+            "wrap": true,
+            "spacing": "medium"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Note**: The expression `@{formatDateTime(utcNow(), 'dddd, MMMM dd, yyyy')}` will automatically insert today's date!
+
+#### Step 3: Test Your Flow (1 minute)
+
+1. Click **"Save"** (top right)
+2. Click **"Test"** button
+3. Select **"Manually"**
+4. Click **"Test"** → **"Run flow"** → **"Done"**
+5. **Check your Teams channel!** You should see the card
+6. Wait a few seconds, then check if the flow succeeded (green checkmark)
+
+## ✅ Power Automate Success!
+
+Your flow will now run automatically every weekday at 9 AM! 🎉
+
+**What you just learned:**
+- ✅ Created a scheduled Power Automate flow
+- ✅ Used dynamic expressions to insert today's date
+- ✅ Automated card delivery without writing code
+- ✅ Tested and verified your flow works
+
+### Disable/Edit Your Flow
+
+**To pause**: 
+- Go to https://make.powerautomate.com → "My flows"
+- Find "Daily Team Reminder"
+- Toggle to "Off"
+
+**To change the schedule**:
+- Open the flow
+- Click on the "Recurrence" trigger
+- Change time/frequency
+- Click "Save"
+
+---
+
 ## 🎓 What Next?
 
 ### Learn More
 1. Read the [Complete Guide](ADAPTIVE_CARDS_GUIDE.md)
-2. Try [Example Cards](examples/)
-3. Explore [Teams Integration](teams-integration/)
+2. Read the [Power Automate Guide](POWER_AUTOMATE_GUIDE.md) - Full automation guide
+3. Try [Example Cards](examples/)
+4. Explore [Teams Integration](teams-integration/)
+5. Try [Power Automate Flows](power-automate/) - Pre-built automation examples
 
 ### Build Something Cool
 - Daily standup reports
 - Build notifications
-- Approval workflows
+- Approval workflows (try [Power Automate](power-automate/))
 - Status dashboards
 - Alert systems
+- Scheduled reminders (perfect for Power Automate!)
+- Form handling with automated responses
 
 ### Experiment
 1. Go to https://adaptivecards.microsoft.com/designer
@@ -190,19 +313,38 @@ If you see the card in Teams, congratulations! You've just:
 
 ## 🐛 Troubleshooting
 
-### "Card not showing in Teams"
+### Card Issues
+
+**"Card not showing in Teams"**
 - Check that webhook URL is correct
 - Ensure JSON structure has the Teams wrapper (`type: "message"`, `attachments`)
 - Verify card version is 1.4 or 1.5 (Teams supports up to 1.5)
 
-### "Error 400 Bad Request"
+**"Error 400 Bad Request"**
 - JSON might be malformed
 - Check quotation marks and commas
 - Validate JSON at https://jsonlint.com
 
-### "Webhook not found"
+**"Webhook not found"**
 - Webhook might have been deleted
 - Create a new webhook and update the URL
+
+### Power Automate Issues
+
+**"Flow not running on schedule"**
+- Check that flow is turned "On" (toggle at top)
+- Verify recurrence settings (time zone, frequency)
+- Check run history for errors
+
+**"HTTP action failed"**
+- Verify webhook URL is correct (copy from Teams webhook settings)
+- Check that `Content-Type` header is set to `application/json`
+- Ensure JSON body is properly formatted
+
+**"Expression error"**
+- Make sure expression syntax is correct: `@{formatDateTime(utcNow(), 'format')}`
+- Test expressions in a "Compose" action first
+- Check for matching braces `{ }`
 
 ## 💡 Pro Tips
 
@@ -210,15 +352,34 @@ If you see the card in Teams, congratulations! You've just:
 2. **Use the Designer**: Design visually, then copy the JSON
 3. **Start Simple**: Begin with basic cards, add complexity gradually
 4. **Test Variations**: Try different colors, sizes, and layouts
+5. **Automate with Power Automate**: Use flows for scheduled cards, approvals, and form handling
+6. **Use Dynamic Content**: Power Automate expressions like `@{formatDateTime()}` make cards dynamic
+7. **Store Webhook in Variables**: In Power Automate, use environment variables for webhook URLs
 
 ## 📚 Resources
 
+### Adaptive Cards
 - **Designer**: https://adaptivecards.microsoft.com/designer
 - **Samples**: https://adaptivecards.io/samples/
 - **Documentation**: https://learn.microsoft.com/en-us/adaptive-cards/
 
+### Power Automate
+- **Portal**: https://make.powerautomate.com
+- **Documentation**: https://learn.microsoft.com/power-automate/
+- **Community**: https://powerusers.microsoft.com/
+
+### This Repository
+- **Complete Adaptive Cards Guide**: [ADAPTIVE_CARDS_GUIDE.md](ADAPTIVE_CARDS_GUIDE.md)
+- **Complete Power Automate Guide**: [POWER_AUTOMATE_GUIDE.md](POWER_AUTOMATE_GUIDE.md)
+- **Card Examples**: [examples/](examples/)
+- **Power Automate Flows**: [power-automate/](power-automate/)
+- **Cheat Sheet**: [CHEAT_SHEET.md](CHEAT_SHEET.md)
+
 ---
 
-**Time to celebrate!** 🎉 You're now an Adaptive Cards user!
+**Time to celebrate!** 🎉 You're now sending Adaptive Cards AND automating them with Power Automate!
 
-Next: [Explore the Full Guide](ADAPTIVE_CARDS_GUIDE.md)
+**Next Steps:**
+- [Explore the Full Adaptive Cards Guide](ADAPTIVE_CARDS_GUIDE.md)
+- [Explore the Full Power Automate Guide](POWER_AUTOMATE_GUIDE.md)
+- [Try Pre-Built Flows](power-automate/)
